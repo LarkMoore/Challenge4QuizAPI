@@ -1,13 +1,36 @@
+function timer(){
+    var sec = 60;
+    var timer=setInterval (function((){
+        document.getElementById('timer').innerHTML='00:'+sec;
+        sec--;
+        if (sec <0) {
+            clearInterval(timer);
+        alert("Time is up!")
+        }
+    } 1000);
+}
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 function showQuestions(questions, quizContainer){
-    
+    var output = [];
+	var answers;
+    for(var i=0; i<questions.length; i++){
+        answers.push(
+            '<label>'
+                + '<input type="radio" name="question'+i+'" value="'+letter+'">'
+                + letter + ': '
+                + questions[i].answers[letter]
+            + '</label>'
+        );
+    }
 function showResults(questions, quizContainer, resultsContainer)
 	}
 
     submitButton.onclick = function(){
 		showResults(questions, quizContainer, resultsContainer);
 	}
-}    showQuestions(questions, quizContainer);
+}    
+
+showQuestions(questions, quizContainer);
 var myQuestions = [
 	{
 		question: "1. Where do we put the JavaScript in HTML?",
@@ -29,21 +52,10 @@ var myQuestions = [
         {
 		question: "3. Which is the correct formatting for a JavaScript array?",
 		answers: {
-			a: 'var numbers =["1", "2", "3", "4"]',
+			a: 'var numbers =['1', '2', '3', '4']'
 			b: 'var numbers =("1", "2", "3", "4)',
-			c: 'var numbers =['1', '2', '3', '4']'
+			c: 'var numbers =["1", "2", "3", "4"]',
 		},
-		correctAnswer: 'b'
+		correctAnswer: 'c'
 	}
 ];
-
-var countDown= new time ("60seconds").getTime();
-        var x = setInterval(function() {
-
-            let btns = document.querySelectorAll("[data-number]");
-            //console.log(btns);
-            for (i of btns) {
-              i.addEventListener('click', function() {
-                // console.log(this.innerText);
-                // console.log(quizArray[currentQuestionIndex].correct);
-               checkAnswer(this.innerText);
